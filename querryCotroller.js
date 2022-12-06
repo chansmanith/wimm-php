@@ -31,7 +31,7 @@ function loadQuiz() {
 
     const currentQuizData = quizData[currentQuiz];
 
-    totalQuestion = quizData.length;
+    totalQuestion = quizData.length - 10;
 
     questionNum = currentQuiz + 1;
     qNum.innerHTML = "Question " + questionNum + " /" + totalQuestion;
@@ -113,13 +113,13 @@ function nextQuestion() {
 
             switch (majorNo) {
                 case 0:
-                    major = 'BUS';
+                    major = 'Business';
                     break;
                 case 1:
                     major = 'Law';
                     break;
                 case 2:
-                    major = 'GLA';
+                    major = 'Global Affairs';
                     break;
                 case 3:
                     major = 'ITM';
@@ -152,7 +152,8 @@ function nextQuestion() {
             // }, 5700);
 
             setTimeout(function () {
-                showForm(major, labelText);
+                console.log(major);
+                showForm(major, label_text);
             }, 2000);
 
             // setTimeout(function () {
