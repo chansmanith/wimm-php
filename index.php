@@ -5,24 +5,27 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:image" content="assets/WIM-Logo.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
     <title>WIM | What Is my Major?</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="major.css">
 
+    <link rel="stylesheet" href="major.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="assets/WIM-BlueLogo.png">
 
 
     <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 </head>
 
 <body>
 
+    <?php
+    include 'querryController.php';
+    ?>
     <!-- Home Page Section -->
     <div id="centered">
         <div class="header">
@@ -191,6 +194,24 @@
         </div>
     </div>
 
+    <!-- form -->
+    <div id="form" class="fadeOpacity">
+        <h1 style="text-align: center; margin-top: 50px"> We love to know about YOU!</h1>
+        <div style="text-align: center; margin: 50px 0">
+            <div>What is your NAME?</div>
+            <div id="name" style="height: 100px;background: #fff6;border: 1px solid rgba(255, 255, 255, 0.68);margin: 10px 200px;border-radius: 50px;font-size: 5em;" spellcheck="false" contenteditable="true"></div>
+        </div>
+        <div style="text-align: center; margin: 50px 0">
+            <div>What Grade are you in?</div>
+            <div id="grade" style="height: 100px;background: #fff6;border: 1px solid rgba(255, 255, 255, 0.68);margin: 10px 200px;border-radius: 50px;font-size: 5em;" spellcheck="false" contenteditable="true"></div>
+        </div>
+        <div style="text-align: center; margin: 50px 0">
+            <div>Where are you study?</div>
+            <div id="study" style="height: 100px;background: #fff6;border: 1px solid rgba(255, 255, 255, 0.68);margin: 10px 200px;border-radius: 50px;font-size: 5em;" spellcheck="false" contenteditable="true"></div>
+        </div>
+        <div id="findMajor" class="checkresult">Check Result!</div>
+    </div>
+
 
     <!-- How to Page -->
     <div id="questionOverlay">
@@ -198,29 +219,29 @@
         <div id="bg">
             <div id="content">
                 <h3>HOW TO USE WIM?</h3>
-                <p> 
+                <p>
                     1. To begin with, when the website is fully loaded, you can find the button named “FIND MY MAJOR”
                     in the middle of the website and the lower part of the website, there are 6 buttons which are
                     the majors where you can click on those buttons to read the information of each major. <br>
-                    <br> 2. To start the quiz,  firstly, click on the button which later on the questions will be shown. 
+                    <br> 2. To start the quiz, firstly, click on the button which later on the questions will be shown.
                     There are 15 questions in total which there will be between 4 and 6 answers in each question. <br>
-                    <br> 3. After reading the question carefully, you can click on one answer below the question and click 
+                    <br> 3. After reading the question carefully, you can click on one answer below the question and click
                     the arrow button on the lower right corner to go to the next question. <br>
-                    <br> 4. After completing the 15 questions, your chosen answer will be generated and your future major 
-                    will pop up as well in a few seconds. You can read the following information which is mainly 
-                    related to your major after the quiz. <br> 
-                    <br> 5. If you want to redo the quiz, you can click the home button and follow the same instructions above. 
+                    <br> 4. After completing the 15 questions, your chosen answer will be generated and your future major
+                    will pop up as well in a few seconds. You can read the following information which is mainly
+                    related to your major after the quiz. <br>
+                    <br> 5. If you want to redo the quiz, you can click the home button and follow the same instructions above.
 
                     <br>
                     <br>
 
-                    Note: The result is NOT 100% accurate, we analyzed your input based upon the research on major and personality, students' learning experiences, and the survey. We are hoping that WIM can ease your difficulty in finding your college major. Please seek guidance from your family, friends, and especially yourselves. Your Major, Your Choice, Your Future! 
+                    Note: The result is NOT 100% accurate, we analyzed your input based upon the research on major and personality, students' learning experiences, and the survey. We are hoping that WIM can ease your difficulty in finding your college major. Please seek guidance from your family, friends, and especially yourselves. Your Major, Your Choice, Your Future!
 
                     <br>
                     <br>
 
                     If you have any concerns or suggestions, please contact to us via the information located in "Project Info | WIM 2022". Thanks!
-                    
+
                 </p>
 
                 <br>
@@ -300,8 +321,7 @@
                 <br>
                 <div id="auppInfo">
                     <p style="margin: 0;">Above information is retrieved from American University of Phnom Penh's
-                        Bachelor's Program info. For more information, please visit <a href="https://www.aupp.edu.kh"
-                            target="_blank">www.aupp.edu.kh</a>
+                        Bachelor's Program info. For more information, please visit <a href="https://www.aupp.edu.kh" target="_blank">www.aupp.edu.kh</a>
                     </p>
 
                     <a href="https://www.aupp.edu.kh" target="_blank">
@@ -331,5 +351,70 @@
 
 <script src="scripts.js"></script>
 <script src="querryCotroller.js"></script>
+
+<script>
+    const quizData = <?php echo json_encode($quizData) ?>;
+    const point = <?php echo json_encode($pointData) ?>;
+    const majorData = <?php echo json_encode($majorData) ?>;
+
+    // console.log(quizData, point, majorData);
+    //initialize section
+
+    function showForm(major, label_text) {
+        var form = document.querySelector('#form').classList;
+        form.add("fade");
+        document.getElementsByClassName("checkresult")[0].style = 'opacity: 0';
+
+        document.body.addEventListener('keypress', function() {
+            var name = document.getElementById("name").textContent;
+            var grade = document.getElementById("grade").textContent;
+            var study = document.getElementById("study").textContent;
+            if (name.length > 0 && grade.length > 0 && study.length > 0) {
+                document.getElementsByClassName("checkresult")[0].style = 'opacity: 1';
+                document.getElementsByClassName("checkresult")[0].classList.add("fade");
+                
+
+                document.getElementsByClassName("checkresult")[0].onclick = function() {
+                    insert(name, grade, study);
+                    form.remove('fade');
+                    loadingPage.toggle("showLoad");
+                    setTimeout(function() {
+                        loadingPage.toggle("showLoad");
+                        showMajor(major, label_text);
+                    }, 3000);
+                }
+            }
+        })
+    }
+
+    function insert(name, grade, school) {
+
+        var n = name;
+        var g = grade;
+        var s = school;
+
+        // AJAX code to send data to php file.
+        $.ajax({
+            type: "POST",
+            url: "insert.php",
+            data: {
+                name: n,
+                grade: g,
+                school: s,
+            },
+            dataType: "JSON",
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+    }
+
+    questionPage();
+    loadQuiz();
+</script>
 
 </html>

@@ -13,6 +13,51 @@
     src: url(fonts/ProductSans-Bold.ttf);
 }
 
+#form {
+    display: none;
+}
+
+#form.fadeOpacity {
+    opacity: 0;
+}
+
+#form.fade {
+    display: block;
+    opacity: 1;
+    animation: fadeII 4s ease;
+}
+
+#form.fadeOut {
+    opacity: 0;
+    animation: fadeOut 2s ease;
+}
+
+.checkresult {
+    opacity: 0;
+}
+
+@keyframes fadeII {
+    0% {
+       
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+       
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 body {
     overflow: hidden;
 }
@@ -172,7 +217,7 @@ i {
     border-style: solid;
     border-width: 1px;
     padding: 10px 10px 10px 10px;
-    margin: 45px 42vw 20px 42vw;
+    margin: 45px 40vw 20px 40vw;
     border-radius: 45px;
     font-size: 1.5vw;
     text-align: center;
@@ -216,7 +261,6 @@ i {
     }
 
     100% {
-
         opacity: 1;
         transform: translateY(0);
     }

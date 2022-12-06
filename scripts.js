@@ -142,10 +142,6 @@ window.onload = function () {
 
     }
 
-
-
-
-
     // initialize function
     hide();
     setTimeout(fade, 1500);
