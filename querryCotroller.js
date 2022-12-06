@@ -31,7 +31,7 @@ function loadQuiz() {
 
     const currentQuizData = quizData[currentQuiz];
 
-    totalQuestion = quizData.length - 10;
+    totalQuestion = quizData.length;
 
     questionNum = currentQuiz + 1;
     qNum.innerHTML = "Question " + questionNum + " /" + totalQuestion;
